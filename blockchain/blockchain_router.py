@@ -2,11 +2,12 @@ from fastapi import APIRouter, Depends,HTTPException
 from sqlalchemy.orm import Session
 from database.connection import get_db
 from blockchain.blockservice import verify_chain,fix_tampered_block
+from auth.ouath2 import get_current_user
 
 router = APIRouter(prefix="/blockchain")
 
 @router.get("/verify")
-def verify_blockchain(db: Session = Depends(get_db)):
+def verify_blockchain(db: Session = Depends(get_db), current_user = Depends(get_current_user)):
     
     result = verify_chain(db)
     
@@ -24,7 +25,7 @@ def verify_blockchain(db: Session = Depends(get_db)):
     
     
 @router.post("/fix/{block_id}")
-def fix_block(block_id: int, db: Session = Depends(get_db)):
+def fix_block(block_id: int, db: Session = Depends(get_db),current_user = Depends(get_current_user)):
     result = fix_tampered_block(db, block_id)
     if not result["success"]:
         raise HTTPException(status_code=400, detail=result["reason"])
