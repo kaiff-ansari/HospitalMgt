@@ -205,10 +205,8 @@ System is unlocked — everything works normally ✅
 
 ---
 
-## Simple Rule to Remember
-
-| Operation | Verify first | Create block |
-|-----------|-------------|--------------|
-| Register / Add | No | Yes — after saving |
-| Update | Yes — before updating | Yes — after updating |
-| Delete | Yes — before deleting | Yes — before deleting |
+Key Benefits
+• Data tamper detection
+• Immutable audit trail
+• Secure change tracking
+• Blockchain-style integrity without external network|
