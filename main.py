@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from models import doctor_model
 from database.connection import engine
-from routers import doctors_router, auth_router,inventory_router
+from routers import doctors_router, auth_router,inventory_router,admin_router
 from models import blockchain_model
 from blockchain.blockchain_router import router as blockchain_router
 
@@ -16,6 +16,7 @@ app.include_router(doctors_router.router)
 app.include_router(auth_router.router)
 app.include_router(blockchain_router)
 app.include_router(inventory_router.router)
+app.include_router(admin_router.router)
 
 
 
